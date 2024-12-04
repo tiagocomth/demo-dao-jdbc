@@ -1,21 +1,25 @@
 package application;
 
-import java.util.Date;
+import java.util.Scanner;
 
 import model.dao.DaoFactory;
 import model.dao.SellerDao;
-import model.entities.Department;
 import model.entities.Seller;
 
 public class Program {
 	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
 	
-		Department dp = new Department(1, "Programação");
+		SellerDao sellerDao = DaoFactory.createSellerDao();
 		
-		Seller seller = new Seller(10, "Thiago", "Thiago@gmail.com", new Date(), 3000.00, dp);
+		System.out.print("Digite o ID a ser Buscado no Banco de Dados: ");
+		int id = sc.nextInt();
 		
-		SellerDao sellerDao = new DaoFactory().createSellerDao();
+		Seller seller = sellerDao.findById(id);
 		
 		System.out.println(seller);
+		
+		sc.close();
 	}
 }

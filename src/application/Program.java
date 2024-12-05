@@ -8,18 +8,12 @@ import model.entities.Seller;
 
 public class Program {
 	public static void main(String[] args) {
-		
-		Scanner sc = new Scanner(System.in);
 	
 		SellerDao sellerDao = DaoFactory.createSellerDao();
 		
-		System.out.print("Digite o ID a ser Buscado no Banco de Dados: ");
-		int id = sc.nextInt();
-		
-		Seller seller = sellerDao.findById(id);
-		
+		System.out.println("==== TEST 1: seller FindById ====");
+		Seller seller = sellerDao.findById(3);
 		System.out.println(seller);
-		
-		sc.close();
+	
 	}
 }
